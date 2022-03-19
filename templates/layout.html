@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      {% block head %}
+      <meta charset="UTF-8">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+      <link rel="stylesheet" href="/static/s.css">
+      
+   {% endblock %}
+   </head>
+   <body>
+      <nav class="navbar navbar-inverse">
+         <div >
+            <a class="navbar navbar-text" href="/home">
+               <h3 class="title">Assignment Work</h3>
+            </a>
+            <ul class="nav navbar-nav pull-right">
+               {% block u %}
+               
+               {% endblock %}
+
+               <li><a href="/logout"> Logout </a></li>
+               
+            </ul>
+         </div>
+      </nav>
+      <div id="content">{% block content %}{% endblock %}</div>
+
+      
+      
+      <br>
+      
+      <footer>
+         <br>
+         <p class="text-center small"> Developed By : Navaneeth N Kamath | 2022 </p>
+      </footer>
+
+   </body>
+</html>

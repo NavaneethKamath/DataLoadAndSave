@@ -1,0 +1,78 @@
+{% extends "layout.html" %}
+{% block head %}
+{{ super() }}
+<title> Home </title>
+<style>
+    .flex-container {
+        display: flex;
+        flex: 1 0 21%;
+        flex-wrap: wrap;
+    }
+
+    .flex-container>div {
+        background-color: #f1f1f1;
+        flex: 1 0 100%;
+        width: 200px;
+        margin: 10px;
+        text-align: center;
+        line-height: 25px;
+        font-size: 20px;
+    }
+
+    .buy {
+        margin-top: 20px;
+        font-size: larger;
+    }
+</style>
+{% endblock %}
+
+{% block u %}
+
+<li>Hello, {{user}} </li>
+
+              
+{% endblock %}
+
+{% block content %}
+
+
+
+
+<!-- Main content -->
+
+<section class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h3 class="card-title">SAVED DATA IN DATABASE</h3>
+                    </div>
+                    <!-- /.card-header -->
+                    <div class="flex-container">
+                        
+                        {% for t in msg %}
+                        <div>
+                            <p>{{t['msg']}}</p>
+                        </div>
+                        {% endfor %}
+                       
+                        <a href="/add" class="btn btn-danger">ADD DATA</a>
+                    </div>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <br>
+                    <!-- /.card-body -->
+                </div>
+                <!-- /.card -->
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- /.content -->
+{% endblock %}

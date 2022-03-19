@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="static/s.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Sansita" rel="stylesheet">
+    <link rel="stylesheet" href="/static/s.css">
+    <link rel="stylesheet" href="/static/reg.css">
+    
+</head>
+
+<body>
+
+    <form role="form"  action="/register" method="post">
+        <div class="container">
+            <h1>Register</h1>
+            <div class="form-group">
+                {% if error %}
+                <div class="alert alert-danger" style="margin-top:10px">{{ error }}</div>
+                {% endif %}
+
+                {% if done %}
+                <div class="alert alert-success" style="margin-top:10px">{{ done }}</div>
+                {% endif %}
+
+            </div>
+            <p>Please fill in this form to create an account.</p>
+            <hr>
+            {% if status == -1 %}
+            <div class="alert alert-danger" style="margin-top:10px">{{ message }}</div>
+            {% endif %}
+            <label for="name"><b>Name</b></label>
+            <input type="text" placeholder="Enter Name" name="name" id="name" required>
+
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" id="email" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" id="password" required>
+
+            <label for="psw-repeat"><b>Repeat Password</b></label>
+            <input type="password" placeholder="Repeat Password" name="agpassword" id="agpassword" required>
+            <hr>
+            <button type="submit" class="btn btn-primary btn-lg btn-block">Register</button>
+            <p>If you already have account then <a href="/">LOGIN.</a> </p>
+        </div>
+    </form>
+   
+    
+    
+    
+</body>
+
+</html>
