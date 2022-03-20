@@ -8,7 +8,7 @@ from flask_bootstrap import *
 from flask_mongoengine import MongoEngine
 
 
-import requests
+
 
 
 app = Flask(__name__)
@@ -38,6 +38,18 @@ class MSG(db.Document):
     def to_json(self):
         return {
             "key": self.key,
+            "msg": self.msg
+            
+        }
+    
+class Message(db.Document):
+    user = db.StringField()
+    msg = db.StringField()
+    
+
+    def to_json(self):
+        return {
+            "user": self.user,
             "msg": self.msg
             
         }
@@ -101,7 +113,7 @@ def login():
 def home():
     if (request.cookies.get('user')):
         user = request.cookies.get('user')
-        msgs=MSG.objects()
+        msgs=Message.objects()
         
         return render_template("home.html", user=user,msg=msgs)
 
@@ -112,17 +124,16 @@ def home():
 def add():
     if (request.cookies.get('user')):
         if request.method=="GET":
-            return render_template('add.html')
+            return render_template('add.html',user=request.cookies.get('user'))
         else:
             data = {
-                "key": request.form['key'],
+                "user": request.cookies.get('user'),
                 "msg": request.form['msg']
                 }
             data = json.dumps(data)
             record = json.loads(data)
-            d = MSG(key=record['key'],msg=record['msg'])
+            d = Message(user=record['user'],msg=record['msg'])
             d.save()
-            user=request.cookies.get('user')
             resp = make_response(redirect('/home'))
             return resp
 

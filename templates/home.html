@@ -28,7 +28,7 @@
 
 {% block u %}
 
-<li>Hello, {{user}} </li>
+<li><a href="/home">Hello, {{user}} </a> </li>
 
               
 {% endblock %}
@@ -53,7 +53,8 @@
                         
                         {% for t in msg %}
                         <div>
-                            <p>{{t['msg']}}</p>
+                            <p><strong>{{t['msg']}}</strong></p>
+                            <h5>- {{t['user']}}</h5>
                         </div>
                         {% endfor %}
                        
